@@ -1,0 +1,137 @@
+═══════════════════════════════════════════════════════════════════════════════
+  INSTRUCCIONES PARA PERSONALIZAR TU APLICACIÓN
+═══════════════════════════════════════════════════════════════════════════════
+
+🎨 CAMBIOS REALIZADOS:
+✓ Colores cambiados a AMARILLO (gradiente dorado)
+✓ Botón principal "El trufi me abandonó - reporta aquí" con texto rojo
+✓ Soporte para agregar logo personalizado
+✓ Soporte para agregar fondo personalizado
+✓ Navegación actualizada
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📱 CÓMO AGREGAR TU LOGO:
+
+OPCIÓN 1 - Haciendo clic en la aplicación:
+1. Abre la aplicación en el navegador (index.html)
+2. Haz clic en el área donde dice "Tu logo aquí" (en la parte superior)
+3. Selecciona una imagen de tu computadora
+4. ¡Listo! El logo se guardará automáticamente
+
+OPCIÓN 2 - Mediante código:
+1. Coloca tu archivo de logo (logo.png, logo.jpg, etc.) en la misma carpeta que index.html
+2. Abre index.html en un editor de texto
+3. Busca esta línea (alrededor de la línea 15):
+   <img id="logoImage" src="" alt="Logo" class="logo-image hidden">
+4. Cambia src="" por src="logo.png" (reemplaza "logo.png" con tu nombre de archivo)
+5. Guarda el archivo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🖼️ CÓMO AGREGAR FONDO PERSONALIZADO:
+
+En la consola del navegador:
+1. Abre la aplicación en el navegador
+2. Presiona F12 para abrir las herramientas de desarrollador
+3. Ve a la pestaña "Console" (Consola)
+4. Escribe: loadBackground()
+5. Selecciona la imagen que deseas como fondo
+6. ¡Listo! El fondo se guardará automáticamente
+
+═══════════════════════════════════════════════════════════════════════════════
+
+📋 REQUISITOS PARA IMÁGENES:
+
+Logo:
+- Formato: PNG, JPG, GIF
+- Tamaño recomendado: 100x100 a 200x200 píxeles
+- Puede ser cuadrado o rectangular
+
+Fondo:
+- Formato: PNG, JPG, GIF
+- Tamaño recomendado: 1080x1920 píxeles (mobile)
+- Asegúrate de que sea legible el contenido encima
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🟨 INFORMACIÓN DE COLORES:
+
+Amarillo Primario: #FFD700 (Oro)
+Naranja Secundario: #FFA500
+Rojo de Alerta: #FF0000 (en el botón "reporta aquí")
+
+Si deseas cambiar estos colores, edita el archivo styles.css
+
+═══════════════════════════════════════════════════════════════════════════════
+
+🚀 FUNCIONALIDADES PRINCIPALES:
+
+1. INICIO (Casa) - Página principal con:
+   - Logo personalizado
+   - Mapa de calor interactivo
+   - Botón de reporte en amarillo
+   - Información de intensidad de abandono
+
+2. COMUNIDAD (Comentarios) - Donde se reportan quejas:
+   - Escribir reportes (máx 500 caracteres)
+   - Ver comentarios de otros usuarios
+   - Se guardan automáticamente
+
+3. ESTADÍSTICAS (Centro) - Datos generales:
+   - Usuarios activos
+   - Reportes del día
+   - Calificación promedio
+   - Consejos útiles
+
+4. CUENTA (Perfil) - Login/Registro:
+   - Registro rápido
+   - Login con email y contraseña
+
+5. TIKTOK (TikTok) - Enlace directo
+
+═══════════════════════════════════════════════════════════════════════════════
+
+💾 ALMACENAMIENTO DE DATOS:
+
+- Logo: Se guarda en localStorage del navegador
+- Fondo: Se guarda en localStorage del navegador
+- Comentarios: Se guardan en localStorage del navegador
+- Los datos persisten entre sesiones
+
+Para LIMPIAR todos los datos guardados:
+1. Abre la consola (F12)
+2. Escribe: localStorage.clear()
+3. Presiona Enter
+
+═══════════════════════════════════════════════════════════════════════════════
+
+⚠️ NOTAS IMPORTANTES:
+
+- El navegador debe tener JavaScript habilitado
+- Necesitas conexión a Internet para ver el mapa
+- Los datos se guardan en el navegador local, no en la nube
+- Si limpias el caché del navegador, se perderán los datos
+
+═══════════════════════════════════════════════════════════════════════════════
+
+❓ PREGUNTAS FRECUENTES:
+
+P: ¿Puedo usar el logo en formato GIF?
+R: Sí, soporta PNG, JPG y GIF
+
+P: ¿El fondo desaparece si cierro el navegador?
+R: No, se guarda automáticamente y aparecerá la próxima vez
+
+P: ¿Puedo cambiar el tamaño del logo?
+R: Sí, edita en styles.css la clase .logo-image
+
+P: ¿Dónde se guardan los datos?
+R: En localStorage del navegador (datos locales)
+
+═══════════════════════════════════════════════════════════════════════════════
+
+✨ ¡LISTO! Tu aplicación está lista para usar con los colores amarillos.
+   Personalízala con tu logo y fondo.
+
+═══════════════════════════════════════════════════════════════════════════════

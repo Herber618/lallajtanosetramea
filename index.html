@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa de Trufis - Reporte de Zonas de Abandono</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+</head>
+<body>
+    <!-- Página Principal / Mapa -->
+    <div id="mapPage" class="page active">
+        <div class="page-header">
+            <div id="logoContainer" class="logo-container">
+                <img id="logoImage" src="logopng.png" alt="Logo" class="logo-image">
+            </div>
+            <h1> Mapa de Calor</h1>
+            <p>Zonas de mayor abandono de trufis</p>
+        </div>
+        
+        <div class="emergency-button-container">
+            <button id="reportButton" class="emergency-button">
+                <span class="button-text">El trufi me abandonó</span>
+                <span class="button-icon">🚕</span>
+                <span class="button-highlight">Reporta aquí</span>
+            </button>
+        </div>
+        
+        <div id="map" class="map-container"></div>
+        <div class="heat-info">
+            <h3>Información del Mapa</h3>
+            <p><span class="heat-indicator hot"></span> <strong>Rojo:</strong> Alto abandono</p>
+            <p><span class="heat-indicator medium"></span> <strong>Amarillo:</strong> Medio</p>
+            <p><span class="heat-indicator low"></span> <strong>Verde:</strong> Bajo abandono</p>
+        </div>
+    </div>
+
+    <!-- Página de Comunidad -->
+    <div id="communityPage" class="page">
+        <div class="page-header">
+            <h1> Comunidad</h1>
+            <p>Comparte tus experiencias y quejas</p>
+        </div>
+        
+        <div class="new-comment-form">
+            <textarea id="commentText" placeholder="Cuéntanos tu experiencia con los trufis..." maxlength="500"></textarea>
+            <div class="form-info">
+                <span id="charCount">0/500</span>
+                <button id="submitComment" class="btn-primary">Publicar</button>
+            </div>
+        </div>
+
+        <div id="commentsList" class="comments-container">
+            <!-- Los comentarios se cargarán aquí -->
+        </div>
+    </div>
+
+    <!-- Página de Estadísticas -->
+    <div id="statsPage" class="page">
+        <div class="page-header">
+            <h1> Estadísticas</h1>
+            <p>Datos generales del servicio</p>
+        </div>
+        
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-icon"></div>
+                <h3>1,234</h3>
+                <p>Usuarios Activos</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"></div>
+                <h3>45</h3>
+                <p>Reportes Hoy</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon"></div>
+                <h3>3.8</h3>
+                <p>Calificación Promedio</p>
+            </div>
+            <div class="stat-card">
+                <div class="stat-icon">⏱</div>
+                <h3>12 min</h3>
+                <p>Espera Promedio</p>
+            </div>
+        </div>
+
+        <div class="tips-section">
+            <h2> Consejos Útiles</h2>
+            <ul>
+                <li>Verifica el mapa de calor antes de salir</li>
+                <li>Reporta zonas de alto abandono</li>
+                <li>Únete a la comunidad y ayuda a otros</li>
+                <li>Completa tu perfil para mejor experiencia</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- Página de Login/Registro -->
+    <div id="authPage" class="page">
+        <div class="page-header">
+            <h1> Cuenta</h1>
+        </div>
+
+        <div id="loginForm" class="auth-form">
+            <h2>Iniciar Sesión</h2>
+            <form>
+                <div class="form-group">
+                    <input type="email" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Contraseña" required>
+                </div>
+                <button type="submit" class="btn-primary">Iniciar Sesión</button>
+                <p class="form-link">¿No tienes cuenta? <a href="#" onclick="toggleForms()">Regístrate aquí</a></p>
+            </form>
+        </div>
+
+        <div id="registerForm" class="auth-form hidden">
+            <h2>Crear Cuenta</h2>
+            <form>
+                <div class="form-group">
+                    <input type="text" placeholder="Nombre completo" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" placeholder="Correo electrónico" required>
+                </div>
+                <div class="form-group">
+                    <input type="tel" placeholder="Teléfono (opcional)">
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Contraseña" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" placeholder="Confirmar contraseña" required>
+                </div>
+                <button type="submit" class="btn-primary">Registrarse</button>
+                <p class="form-link">¿Ya tienes cuenta? <a href="#" onclick="toggleForms()">Inicia sesión</a></p>
+            </form>
+        </div>
+    </div>
+
+    <!-- Barra de Navegación Inferior -->
+    <nav class="bottom-nav">
+        <a href="#" class="nav-item" onclick="showPage('mapPage')">
+            <i class="fas fa-home"></i>
+            <span>Inicio</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('communityPage')">
+            <i class="fas fa-comments"></i>
+            <span>Comunidad</span>
+        </a>
+        <a href="#" class="nav-item center" onclick="showPage('statsPage')">
+            <i class="fas fa-chart-bar"></i>
+            <span>Estadísticas</span>
+        </a>
+        <a href="#" class="nav-item" onclick="showPage('authPage')">
+            <i class="fas fa-user"></i>
+            <span>Cuenta</span>
+        </a>
+        <a href="https://www.tiktok.com" target="_blank" class="nav-item">
+            <i class="fab fa-tiktok"></i>
+            <span>TikTok</span>
+        </a>
+    </nav>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet-heatmap/1.0.2/leaflet-heatmap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/heatmap.js/2.0.5/heatmap.min.js"></script>
+    <script src="script.js"></script>
+    
+    <!-- Script para cargar fondo personalizado -->
+    <script>
+        // Cargar fondo al iniciar
+        window.addEventListener('load', function() {
+            document.body.style.backgroundImage = "url('fondopng.png')";
+            document.body.style.backgroundSize = 'cover';
+            document.body.style.backgroundAttachment = 'fixed';
+            document.body.style.backgroundRepeat = 'no-repeat';
+        });
+    </script>
+</body>
+</html>
